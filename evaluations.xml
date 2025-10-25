@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<evaluation>
+  <metadata>
+    <server_name>binance_mcp</server_name>
+    <description>Evaluation questions for Binance MCP Server - Public Spot API</description>
+    <evaluation_type>read_only</evaluation_type>
+    <date_created>2025-01-15</date_created>
+  </metadata>
+  
+  <qa_pair>
+    <question>Using the Binance API, find all trading pairs that have BTC as the base asset and USDT as the quote asset. How many such pairs exist with TRADING status?</question>
+    <answer>1</answer>
+    <notes>This tests the search_symbols tool with both base_asset and quote_asset filters. The answer should be 1 (BTCUSDT).</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>What are the valid kline intervals supported by Binance that are measured in hours? List them as a comma-separated string in ascending order.</question>
+    <answer>1h,2h,4h,6h,8h,12h</answer>
+    <notes>This tests understanding of the klines tool parameters. The intervals are documented in the tool description and code.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>According to the Binance exchange information, what is the request weight rate limit per minute? Provide only the number.</question>
+    <answer>6000</answer>
+    <notes>This tests the get_exchange_info tool and ability to extract rate limit information.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>If you want to analyze the Bitcoin price trend over the last 30 days using daily candles, which tool would you use and what would be the correct interval parameter? Answer in format: tool_name,interval</question>
+    <answer>binance_get_klines,1d</answer>
+    <notes>This tests understanding of which tool to use for historical price data and correct interval format.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>What are the two response format options supported by all Binance MCP tools? List them in alphabetical order, comma-separated.</question>
+    <answer>json,markdown</answer>
+    <notes>This tests understanding of the response_format parameter available across all tools.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>If you want to check the current spread (difference between best bid and best ask) for a trading pair, which Binance MCP tool would be most efficient to use?</question>
+    <answer>binance_get_best_price</answer>
+    <notes>This tests understanding of tool selection. While get_order_book could work, get_best_price is specifically designed for this use case and is more efficient.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>What is the maximum number of symbols that can be requested in a single call to binance_get_ticker according to the input validation? Provide only the number.</question>
+    <answer>100</answer>
+    <notes>This tests understanding of the tool's input constraints defined in the TickerInput model.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>What is the character limit for responses from the Binance MCP server before automatic truncation occurs? Provide only the number.</question>
+    <answer>25000</answer>
+    <notes>This tests understanding of the CHARACTER_LIMIT constant used throughout the server.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>Which Binance MCP tool would you use if you only need the current price and want the fastest, most lightweight query? Do not include the binance_ prefix.</question>
+    <answer>get_price</answer>
+    <notes>This tests understanding of tool selection. get_price is specifically optimized for fast price queries without additional statistics.</notes>
+  </qa_pair>
+  
+  <qa_pair>
+    <question>According to the order book tool, what are the valid limit values you can use (the exact numbers)? List them as comma-separated integers in ascending order.</question>
+    <answer>5,10,20,50,100,500,1000,5000</answer>
+    <notes>This tests understanding of the OrderBookInput validation which restricts limit to specific values.</notes>
+  </qa_pair>
+
+  <instructions>
+    <how_to_run>
+      These questions are designed to be answered by an LLM using the Binance MCP server tools.
+      
+      To run the evaluation:
+      1. Ensure the Binance MCP server is installed and configured
+      2. Start the MCP server
+      3. Connect an LLM client (like Claude) to the server
+      4. Ask each question to the LLM
+      5. Compare the LLM's answer to the provided answer
+      6. Count correct answers for success rate
+      
+      Success criteria:
+      - 8+/10 correct: Excellent performance
+      - 6-7/10 correct: Good performance  
+      - 4-5/10 correct: Acceptable performance
+      - &lt;4/10 correct: Needs improvement
+    </how_to_run>
+    
+    <answer_verification>
+      Answers should be verified by exact string match (case-insensitive, whitespace-trimmed).
+      Some answers may require normalization (e.g., removing spaces in comma-separated lists).
+    </answer_verification>
+  </instructions>
+</evaluation>
