@@ -1,4 +1,19 @@
-# Binance MCP Server
+<h1 align="center">Binance MCP Server</h1>
+
+<p align="center">
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10%2B-blue.svg" alt="Python Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+  <a href="https://modelcontextprotocol.io/"><img src="https://img.shields.io/badge/MCP-compatible-purple.svg" alt="MCP"></a>
+  <a href="https://www.binance.com/"><img src="https://img.shields.io/badge/Binance-API-yellow.svg" alt="Binance API"></a>
+  <img src="https://img.shields.io/badge/status-active-success.svg" alt="Status">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey.svg" alt="Platform">
+</p>
+
+<p align="center">
+<img width="1032" height="879" alt="image" src="https://github.com/user-attachments/assets/6f00b820-11a4-4d01-ade9-96127852b3d0" />
+</p>
+
+---
 
 A Model Context Protocol (MCP) server that provides access to Binance's public Spot API, enabling LLMs to fetch real-time cryptocurrency market data, trading pairs information, and exchange statistics.
 
